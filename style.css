@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 93.75%;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -38,6 +42,20 @@ h2 {
     width: min(90vw, 800px);
 
     margin: auto;
+}
+
+a {
+    color: #49aa26;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3dd705;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: .8rem;
 }
 
 header {
@@ -92,14 +110,22 @@ header {
 }
 
 #dataTable {
+    display: block;
     width: 100%;
     border-spacing: 0 0.5rem;
     color: #969cb3;
+
+    overflow-x: auto;
 }
 
 table thead tr th:first-child,
 table tbody tr td:first-child {
     border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
 }
 
 table thead th {
@@ -141,4 +167,16 @@ footer {
     color: var(--dark-blue);
 
     opacity: 0.6;
+}
+
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%;
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 }
