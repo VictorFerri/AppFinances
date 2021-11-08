@@ -12,7 +12,7 @@ html {
     font-size: 93.75%;
 }
 
-.sr-only {
+.srOnly {
     position: absolute;
     width: 1px;
     height: 1px;
