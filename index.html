@@ -87,10 +87,35 @@
             </section>
         </main>
 
-        <div class="modalOverlay">
+        <div class="modalOverlay active">
             <div class="modal">
-                <div class="moda-content">
-                    Oi
+                <div id="form">
+                    <h2>Nova Transação</h2>
+                    <form action="">
+                        <div class="inputGroup">
+                            <label 
+                                class="srOnly" 
+                                for="description">Descrição</label>
+                            <input
+                                type="text"
+                                name="description"
+                                id="description"
+                                placeholder="Descrição"
+                            />
+                        </div>
+
+                        <div class="inputGroup">
+                            <label 
+                                class="srOnly" 
+                                for="amount">Descrição</label>
+                            <input
+                                type="number"
+                                name="amount"
+                                id="amount"
+                                placeholder="Descrição"
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
