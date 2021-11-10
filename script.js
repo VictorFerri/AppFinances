@@ -6,6 +6,7 @@ const Modal = {
             .querySelector('.modalOverlay')
             .classList.add('active');
     },
+
     close(){
         // Close the Modal.
         // Remove the Class Active in modal.
@@ -22,35 +23,60 @@ const Transactions = [
         amount: -50000,
         date: '23/01/2021'
     },
+
     {
         id: 2,
         description: 'Website',
         amount: 500000,
         date: '23/01/2021'
     },
+
     {
         id: 3,
         description: 'Internet',
         amount: -20000,
         date: '23/01/2021'
     },
+
     {
         id: 4,
         description: 'App',
-        amount: -30430,
+        amount: 30430,
         date: '23/01/2023'
-    },
+    }
 ]
 
 const Transaction = {
     incomes() {
         // some the incomes.
+
+        let income = 0;
+
+        Transactions.forEach(transaction => {
+            if (transaction.amount > 0) {
+                income += transaction.amount;
+            }
+        })
+        return income;
     },
+
     expenses() {
         // some the expenses.
+
+        let expenses = 0;
+
+        Transactions.forEach(transaction => {
+            if (transaction.amount < 0) {
+                expenses += transaction.amount;
+            }
+        })
+        return expenses;
     },
+
     total() {
         // incomes - expenses.
+
+        return Transaction.incomes() + Transaction.expenses();
     }
 }
 
@@ -64,6 +90,7 @@ const DOM = {
 
 
     },
+
     innerHTMLTransaction(transaction) {
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
@@ -81,6 +108,18 @@ const DOM = {
         `
 
         return html
+    },
+
+    updateBalance() {
+        document
+            .getElementById('incomeDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.incomes());
+        document
+            .getElementById('expenseDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.expenses());
+        document
+            .getElementById('totalDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.total());
     }
 }
 
@@ -104,3 +143,5 @@ const Utils = {
 Transactions.forEach(function(transaction) {
     DOM.addTransaction(transaction)
 })
+
+DOM.updateBalance();
