@@ -16,40 +16,42 @@ const Modal = {
     }
 }
 
-const Transactions = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -50000,
-        date: '23/01/2021'
-    },
-
-    {
-        id: 2,
-        description: 'Website',
-        amount: 500000,
-        date: '23/01/2021'
-    },
-
-    {
-        id: 3,
-        description: 'Internet',
-        amount: -20000,
-        date: '23/01/2021'
-    },
-
-    {
-        id: 4,
-        description: 'App',
-        amount: 30430,
-        date: '23/01/2023'
-    }
-]
 
 const Transaction = {
-    all: Transactions,
+    all: [
+        {
+            description: 'Luz',
+            amount: -50000,
+            date: '23/01/2021'
+        },
+    
+        {
+            description: 'Website',
+            amount: 500000,
+            date: '23/01/2021'
+        },
+    
+        {
+            description: 'Internet',
+            amount: -20000,
+            date: '23/01/2021'
+        },
+    
+        {
+            description: 'App',
+            amount: 30430,
+            date: '23/01/2023'
+        }
+    ],
+
     add(transaction) {
         Transaction.all.push(transaction);
+
+        App.reload();
+    },
+
+    remove(index) {
+        Transaction.all.splice(index, 1);
 
         App.reload();
     },
@@ -151,6 +153,12 @@ const Utils = {
     }
 }
 
+const Form = {
+    submit(event) {
+        
+    }
+}
+
 const App = {
     init() {
         
@@ -169,10 +177,3 @@ const App = {
 }
 
 App.init();
-
-Transaction.add({
-    id: 5,
-    description: 'alo',
-    amount: 200,
-    date: '23/01/2012'
-})
