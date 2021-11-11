@@ -47,12 +47,19 @@ const Transactions = [
 ]
 
 const Transaction = {
+    all: Transactions,
+    add(transaction) {
+        Transaction.all.push(transaction);
+
+        App.reload();
+    },
+
     incomes() {
         // some the incomes.
 
         let income = 0;
 
-        Transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             if (transaction.amount > 0) {
                 income += transaction.amount;
             }
@@ -65,7 +72,7 @@ const Transaction = {
 
         let expenses = 0;
 
-        Transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             if (transaction.amount < 0) {
                 expenses += transaction.amount;
             }
@@ -120,6 +127,10 @@ const DOM = {
         document
             .getElementById('totalDisplay')
             .innerHTML = Utils.formatCurrency(Transaction.total());
+    },
+
+    clearTransactions() {
+        DOM.transactionsContainer.innerHTML = "";
     }
 }
 
@@ -140,8 +151,28 @@ const Utils = {
     }
 }
 
-Transactions.forEach(function(transaction) {
-    DOM.addTransaction(transaction)
-})
+const App = {
+    init() {
+        
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        })
+        
+        DOM.updateBalance();
 
-DOM.updateBalance();
+    },
+
+    reload() {
+        DOM.clearTransactions();
+        App.init();
+    }
+}
+
+App.init();
+
+Transaction.add({
+    id: 5,
+    description: 'alo',
+    amount: 200,
+    date: '23/01/2012'
+})
