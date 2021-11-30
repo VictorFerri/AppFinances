@@ -190,7 +190,6 @@ const Form = {
 
     saveTransaction(transaction) {
         Transaction.add(transaction)
-
     },
 
     clearFields() {
