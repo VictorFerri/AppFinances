@@ -124,9 +124,9 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        value = Number(value) * 100
+        value = value * 100
 
-        return value
+        return Math.round(value)
     },
 
     formatDate(date) {
@@ -219,9 +219,10 @@ const Form = {
 const App = {
     init() {
         Transaction.all.forEach(DOM.addTransaction)
-        DOM.updateBalance();
 
-        Storage.set(transaction.all)
+        DOM.updateBalance()
+
+        Storage.set(Transaction.all)
     },
 
     reload() {
