@@ -266,7 +266,7 @@ input {
     margin-top: 0.8rem;
 }
 
-.inputGroup small {
+.inputGroup .help {
     opacity: 0.4;
 }
 
