@@ -16,7 +16,7 @@ const Modal = {
     }
 }
 
-const Storage = {
+const StorageMain = {
     get() {
         return JSON.parse(localStorage.getItem("dev.finances:transaction")) || 
         []
@@ -28,7 +28,7 @@ const Storage = {
 }
 
 const Transaction = {
-    all: Storage.get(),
+    all: StorageMain.get(),
 
     add(transaction) {
         Transaction.all.push(transaction);
@@ -125,9 +125,9 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        value = value * 100
+        valueNumber = Number(value) * 100
 
-        return Math.round(value)
+        return valueNumber
     },
 
     formatDate(date) {
@@ -164,7 +164,6 @@ const Form = {
             date: Form.date.value
         }
     },
-
     
     validateField() {
         const { description, amount, date } = Form.getValues()
@@ -178,7 +177,7 @@ const Form = {
     formatValues() {
         let { description, amount, date } = Form.getValues()
 
-        amount = Utils.formatAmount(description)
+        amount = Utils.formatAmount(amount)
 
         date = Utils.formatDate(date)
 
@@ -220,10 +219,10 @@ const Form = {
 const App = {
     init() {
         Transaction.all.forEach(DOM.addTransaction)
-
+        
         DOM.updateBalance()
 
-        Storage.set(Transaction.all)
+        StorageMain.set(Transaction.all)
     },
 
     reload() {
