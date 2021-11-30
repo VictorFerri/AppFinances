@@ -204,6 +204,10 @@ td.expense {
     color: #e92929;
 }
 
+.remove {
+    cursor: pointer;
+}
+
 footer {
     text-align: center;
     padding: 4rem 0 2rem;
