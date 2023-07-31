@@ -6,4 +6,4 @@ The project is a financial management website designed to make the management of
 **Front-end:** Html, Css e JavaScript
 
 ## Links
-site: https://site-finances.vercel.app/
+Site: https://site-finances.vercel.app/
